@@ -10,12 +10,19 @@ class AppRoutes {
 
   // TODO ALUNO: ao criar uma nova tela de detalhes, cadastre aqui
 
+  // INSERÇÃO NOVA: Definição da constante de identificação da rota dos Pokémons
+  static const String detalhesPokemon = '/detalhes-pokemon';
+
   static Future<Map<String, WidgetBuilder>> getRoutes() async {
     return {
       home: (context) => const HomePage(),
       detalhesProduto: (context) => const DetalhesProdutoPage(),
-
+      
       // TODO ALUNO: depois de criar a página, conecte a rota ao widget da tela.
+      
+      // INSERÇÃO NOVA: Mapeamento que conecta a rota ao Widget correspondente
+      detalhesPokemon: (context) => const DetalhesPokemonPage(),
+
     };
   }
 }

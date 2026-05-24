@@ -29,3 +29,16 @@ O que armazena: A infraestrutura técnica que faz o app funcionar por baixo dos 
 O que armazena: Onde o trabalho real acontece. O projeto base já possui essa estrutura.  Funcionalidade: Divide o aplicativo pelas suas funcionalidades práticas. Em vez de agrupar todos os arquivos por tipo (todas as telas juntas), agrupa por contexto. Você terá uma pasta pokemons/ aqui dentro, e dentro dela ficarão estritamente as telas de listagem, as telas de detalhes, os cards e as rotas específicas da Pokédex.  
 4. Pasta shared/ (Componentes Compartilhados)  
 O que armazena: Elementos reutilizáveis por todo o aplicativo.Funcionalidade: Tudo o que pode ser usado em mais de uma feature vem para cá. Se o botão de "favoritar" for usado tanto na Pokédex quanto em uma futura tela de "Meus Favoritos", o código desse botão mora no shared. O mesmo vale para a BottomNavigationBar, fontes de texto padronizadas ou modelos de dados genéricos. Isso evita duplicação de código.
+
+### Questão 2: Mapeamento de nova rota  
+Novas inserções no arquivo `app_routes.dart`
+
+Foram adicionadas as seguintes linhas:  
+
+```dart
+// INSERÇÃO NOVA: Definição da constante de identificação da rota dos Pokémons
+static const String detalhesPokemon = '/detalhes-pokemon';
+
+// INSERÇÃO NOVA: Mapeamento que conecta a rota ao Widget correspondente
+detalhesPokemon: (context) => const DetalhesPokemonPage(),
+
