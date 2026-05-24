@@ -4,6 +4,8 @@ import '../jogos/jogos_page.dart';
 import '../musicas/musicas_page.dart';
 import '../perfil/perfil_page.dart';
 import '../produtos/produtos_page.dart';
+// INSERÇÃO NOVA: Import da tela de listagem de Pokémons
+import '../pokemons/pokemons_page.dart';
 import 'widget/home_bottom_navigation.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +25,8 @@ class _HomePageState extends State<HomePage> {
     PerfilPage(),
 
     // TODO ALUNO: nova funcionalidade adicionada na BottomNavigation.
+    // INSERÇÃO NOVA: Adicionando a página na lista de renderização
+    PokemonsPage(),
   ];
 
   final List<String> _titulos = const [

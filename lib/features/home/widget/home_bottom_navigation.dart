@@ -39,11 +39,12 @@ class HomeBottomNavigation extends StatelessWidget {
         ),
 
         // TODO ALUNO: Adicionar um novo botão para tela de PokemonsPage
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.catching_pokemon_outlined),
-        //   activeIcon: Icon(Icons.catching_pokemon),
-        //   label: 'Pokémons',
-        // ),
+        // INSERÇÃO: Botão da tela de Pokémons descomentado
+        BottomNavigationBarItem(
+          icon: Icon(Icons.catching_pokemon_outlined),
+          activeIcon: Icon(Icons.catching_pokemon),
+          label: 'Pokémons',
+        ),
       ],
     );
   }

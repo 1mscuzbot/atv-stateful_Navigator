@@ -41,4 +41,38 @@ static const String detalhesPokemon = '/detalhes-pokemon';
 
 // INSERÇÃO NOVA: Mapeamento que conecta a rota ao Widget correspondente
 detalhesPokemon: (context) => const DetalhesPokemonPage(),
+```
 
+### Questão 3: Nova ação na BottomNavigation  
+Descomentando a parte do 'home_bottom_navigation.dart' (já adicionada anteriormente):  
+```
+        // INSERÇÃO: Botão da tela de Pokémons descomentado
+        BottomNavigationBarItem(
+          icon: Icon(Icons.catching_pokemon_outlined),
+          activeIcon: Icon(Icons.catching_pokemon),
+          label: 'Pokémons',
+        ),
+```
+
+Incluído as linhas dentro do 'home_page.dart':  
+```
+// INSERÇÃO NOVA: Import da tela de listagem de Pokémons
+import '../pokemons/pokemons_page.dart';
+
+// INSERÇÃO NOVA: Adicionando a página na lista de renderização
+PokemonsPage(),
+
+Descomentado:
+    // A ordem desta lista deve bater com a ordem de _paginas.
+    'Pokémons',
+```
+
+Criado o arquivo "./pokemons/pokemons_page.dart" com Scaffold.  
+
+Explicação da troca de telas com o BottomNavigationBar: 
+    A troca de contexto ocorre através do gerenciamento de estado local na HomePage, que é um StatefulWidget.  
+    O processo funciona da seguinte forma:  
+    1. Estado Central: A classe _HomePageState mantém a variável _indiceSelecionado, que rastreia qual aba está ativa, e duas listas paralelas: _paginas (contendo os Widgets de cada tela) e _titulos (contendo os textos da AppBar).  
+    2. Interação: Quando o usuário toca em um item da HomeBottomNavigation, a função _alterarPagina é chamada, recebendo o novo índice escolhido.  
+    3. Reconstrução (State): A função executa o método setState(), atualizando o _indiceSelecionado e sinalizando ao Flutter que a interface precisa ser reconstruída.  
+    4. Renderização com IndexedStack: O corpo da tela (body) utiliza o widget IndexedStack. Ele carrega todos os widgets da lista _paginas de uma só vez, mas exibe apenas aquele que corresponde ao _indiceSelecionado. Isso garante uma troca instantânea  e preserva o estado interno de cada tela (posição de rolagem, dados inseridos, etc.) enquanto o usuário navega entre as abas.  
