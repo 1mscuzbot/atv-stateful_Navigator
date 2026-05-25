@@ -78,7 +78,9 @@ Explicação da troca de telas com o BottomNavigationBar:
     4. Renderização com IndexedStack: O corpo da tela (body) utiliza o widget IndexedStack. Ele carrega todos os widgets da lista _paginas de uma só vez, mas exibe apenas aquele que corresponde ao _indiceSelecionado. Isso garante uma troca instantânea  e preserva o estado interno de cada tela (posição de rolagem, dados inseridos, etc.) enquanto o usuário navega entre as abas.
 
 ### Questão 4: Cria Classe Pokémon
-    Com base na prova pratica do 1 bimestre, foi adaptado para esta atividade (equivalente ao `produto.dart`). Linhas modificadas (da prova) foram comentadas no código.
+    Com base na prova pratica do 1 bimestre, foi adaptado para esta atividade (equivalente ao `produto.dart`).  
+    Linhas modificadas (da prova) foram comentadas no código.  
+    
     Criação do arquivo `.lib/shared/models.pokemon.dart`.
 
 ### Questão 5: 
