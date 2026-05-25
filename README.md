@@ -77,10 +77,10 @@ Explicação da troca de telas com o BottomNavigationBar:
     3. Reconstrução (State): A função executa o método setState(), atualizando o _indiceSelecionado e sinalizando ao Flutter que a interface precisa ser reconstruída.  
     4. Renderização com IndexedStack: O corpo da tela (body) utiliza o widget IndexedStack. Ele carrega todos os widgets da lista _paginas de uma só vez, mas exibe apenas aquele que corresponde ao _indiceSelecionado. Isso garante uma troca instantânea  e preserva o estado interno de cada tela (posição de rolagem, dados inseridos, etc.) enquanto o usuário navega entre as abas.
 
-### Questão 4: Cria Classe Pokémon
+### Questão 4: Cria Classe Pokémon  
 Com base na prova pratica do 1 bimestre, foi adaptado para esta atividade (equivalente ao `produto.dart`).  
 Linhas modificadas (da prova) foram comentadas no código.  
     
 Criação do arquivo `.lib/shared/models.pokemon.dart`.
 
-### Questão 5: 
+### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokemons  
