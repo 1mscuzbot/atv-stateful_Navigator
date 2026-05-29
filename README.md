@@ -83,4 +83,4 @@ Linhas modificadas (da prova) foram comentadas no código.
     
 Criação do arquivo `.lib/shared/models.pokemon.dart`.
 
-### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokemons  
+### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokemons
