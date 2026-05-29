@@ -45,7 +45,7 @@ detalhesPokemon: (context) => const DetalhesPokemonPage(),
 
 ### Questão 3: Nova ação na BottomNavigation  
 Descomentando a parte do `home_bottom_navigation.dart` (já adicionada anteriormente):  
-```
+```dart
 // INSERÇÃO: Botão da tela de Pokémons descomentado
 BottomNavigationBarItem(
   icon: Icon(Icons.catching_pokemon_outlined),
@@ -55,7 +55,7 @@ BottomNavigationBarItem(
 ```
 
 Incluído as linhas dentro do `home_page.dart`:  
-```
+```dart
 // INSERÇÃO NOVA: Import da tela de listagem de Pokémons
 import '../pokemons/pokemons_page.dart';
 
@@ -124,3 +124,13 @@ Na tela de destino (DetalhesPokemonPage), os dados são extraídos dinamicamente
 ```dart
 final pokemon = ModalRoute.of(context)!.settings.arguments as Pokemon;
 ```
+### Desafio Adicional
+1. Botão de gostar / desgostar (StatefulWidget)
+
+A página DetalhesPokemonPage foi voluntariamente convertida de StatelessWidget para StatefulWidget para viabilizar a manipulação de estado em tempo de execução.
+
+No rodapé da página de detalhes, foi adicionado um botão de ação horizontal persistente, ocupando a largura total da tela para espelhar o comportamento do botão "Adicionar ao carrinho" da feature de produtos.
+
+* Comportamento do Estado Local: Ao interagir com o botão, o método setState() é disparado invertendo o valor booleano do atributo pokemon.favorito.
+
+* Feedback Visual Imediato: A interface reconstrói o botão dinamicamente trocando sua cor (Verde com ícone vazado para Gostar / Vermelho com ícone preenchido para Remover dos Favoritos) e alterando o rótulo de texto em tempo real conforme a escolha do usuário.
