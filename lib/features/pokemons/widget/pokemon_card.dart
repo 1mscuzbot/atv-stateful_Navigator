@@ -45,7 +45,7 @@ class PokemonCard extends StatelessWidget {
                       ),
                 ),
               ),
-              // Imagem do Pokémon vinda da URL estável da model
+              // Imagem do Pokémon
               Expanded(
                 child: Image.network(
                   pokemon.urlImagem,
@@ -66,7 +66,7 @@ class PokemonCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              // Tipo do Pokémon em formato de tag sutil
+              // Tipo do Pokémon em formato de tag
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(

@@ -83,4 +83,44 @@ Linhas modificadas (da prova) foram comentadas no código.
     
 Criação do arquivo `.lib/shared/models.pokemon.dart`.
 
-### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokemons
+### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokémons
+
+Criação do arquivo `lib/features/pokemons/pokemons_page.dart`. 
+
+A tela consome uma lista estática mockada de **12 Pokémons** (contendo os 3 iniciais das três primeiras gerações, Pikachu, Mew e Mewtwo) localizada no arquivo de model. Para contornar as restrições de segurança de CORS impostas pelo ambiente Flutter Web no Chrome, as imagens foram apontadas diretamente para o repositório raw da PokeAPI no GitHub, cujo servidor possui cabeçalhos abertos de compartilhamento.
+
+O layout foi estruturado utilizando um `GridView.builder` dinâmico para renderizar os cards de forma limpa e performática em duas colunas.
+
+### Questão 6: Layout dos Cards
+Criação do componente isolado `lib/features/pokemons/widgets/pokemon_card.dart`.
+
+Seguindo a exigência de modularização do projeto, o layout do card foi extraído para uma subpasta de widgets. O design respeita a identidade visual em tons de verde definida pelo professor, utilizando:
+* `Card` com bordas arredondadas e contorno sutil em verde claro.
+* `InkWell` para fornecer feedback visual de clique (efeito cascata).
+* `FilterQuality.none` na renderização das imagens para garantir que a estética clássica de Pixel Art (estilo Game Boy / Nintendo DS) permaneça nítida ao ser expandida na tela.
+
+### Questão 8: Tela de Detalhes
+Criação do arquivo `lib/features/pokemons/detalhes_pokemon_page.dart`.
+
+Para manter a fidelidade com a arquitetura e design pré-existentes do projeto base (como a tela de exibição de produtos), a interface de detalhes foi construída seguindo um padrão visual plano (*flat*), eliminando blocos flutuantes pesados.
+* **Alinhamento:** Todo o bloco de conteúdo textual e características herdadas da prova foi alinhado estritamente à esquerda (`CrossAxisAlignment.start`).
+* **Elementos obrigatórios inclusos:** Imagem em destaque no topo com container de fundo neutro, Nome acompanhado do identificador numérico, Tag de Tipo destacada, Ficha técnica textual com ícones nativos (Nível, HP Máximo/Atual e Status de Captura) e a seção descritiva das características do Pokémon.
+
+### Questão 9: Evento de Navegação do Card para os Detalhes
+
+A amarração do fluxo de navegação foi feita injetando a lógica do `Navigator` dentro do evento `onTap` do `PokemonCard`. O clique recupera o contexto da aplicação e empilha a rota cadastrada passando o próprio objeto selecionado como argumento:
+
+```dart
+onTap: () {
+  Navigator.pushNamed(
+    context,
+    '/detalhes-pokemon', // Rota configurada na Questão 2
+    arguments: pokemon,   // Objeto inteiro da model enviado por parâmetro
+  );
+},
+```
+Na tela de destino (DetalhesPokemonPage), os dados são extraídos dinamicamente da requisição logo no início do método de build através da linha:
+
+```dart
+final pokemon = ModalRoute.of(context)!.settings.arguments as Pokemon;
+```
