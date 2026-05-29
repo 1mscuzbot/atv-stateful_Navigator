@@ -1,39 +1,40 @@
-# StatefulWidget + Navigator  
+# StatefulWidget + Navigator - Pokédex Flutter
 
-## Atividade  
-Descrição:
+## 📋 Descrição da Atividade
 
+Nesta atividade, o projeto base em Flutter foi desenvolvido localmente e adaptado para incluir uma nova funcionalidade completa: uma lista de Pokémons (Pokédex). Seguindo as diretrizes de arquitetura, padrões de design e modularização do projeto original, a aplicação estende as features existentes reaproveitando os componentes e contratos pré-configurados.
 
-Nesta atividade, você deverá carregar o projeto Flutter no Firebase Studio e adaptar a aplica-
-ção existente para incluir uma nova funcionalidade: uma lista de Pokémons. O projeto base já
-possui uma estrutura com features, models, rotas, telas de listagem, telas de detalhes, cards e
-BottomNavigationBar. Você deverá seguir o mesmo padrão já usado nas funcionalidades exis-
-tentes, reaproveitando a arquitetura do projeto.  
+**Objetivos alcançados na experiência do usuário:**
+* Inicialização limpa do ecossistema mobile;
+* Inclusão dinâmica da opção “Pokémons” na `BottomNavigationBar`;
+* Exibição dos dados em uma grade responsiva com `GridView`;
+* Componentização visual dos elementos em formato de Cards temáticos;
+* Fluxo completo de navegação e transporte de argumentos (`Navigator.pushNamed`);
+* Tela de detalhes rica com exibição de atributos herdados de regras de negócio anteriores.
 
+---
 
-Ao final, o usuário deverá conseguir:  
-    • abrir o app;  
-    • ver a nova opção “Pokémons” na BottomNavigationBar;  
-    • acessar a tela de listagem de Pokémons;  
-    • visualizar os Pokémons em cards;  
-    • clicar em um card;  
-    • navegar para a tela de detalhes do Pokémon selecionado.  
+## 🛠️ Resolução das Questões
 
-### Questão 1:  Estrutura da pasta 'lib'
+### Questão 1: Estrutura da pasta `lib`
 
-1. Pasta app/ (Configurações Globais)  
-O que armazena: O coração da inicialização do aplicativo.Funcionalidade: Contém as configurações principais e as rotas globais do sistema. É aqui que fica o widget raiz (geralmente o MaterialApp), a definição do tema central (cores em tons de verde que o professor mencionou) e o arquivo de mapeamento por onde o Navigator sabe qual tela abrir.  
-2. Pasta core/ (Núcleo do Sistema)  
-O que armazena: A infraestrutura técnica que faz o app funcionar por baixo dos panos.Funcionalidade: Guarda lógicas que não são visuais e que não pertencem a nenhuma funcionalidade específica. Inclui integrações com banco de dados, clientes HTTP para requisições de API, tratamento de erros genéricos e constantes. É o "motor" do app.  
-3. Pasta features/ (Funcionalidades de Negócio)  
-O que armazena: Onde o trabalho real acontece. O projeto base já possui essa estrutura.  Funcionalidade: Divide o aplicativo pelas suas funcionalidades práticas. Em vez de agrupar todos os arquivos por tipo (todas as telas juntas), agrupa por contexto. Você terá uma pasta pokemons/ aqui dentro, e dentro dela ficarão estritamente as telas de listagem, as telas de detalhes, os cards e as rotas específicas da Pokédex.  
-4. Pasta shared/ (Componentes Compartilhados)  
-O que armazena: Elementos reutilizáveis por todo o aplicativo.Funcionalidade: Tudo o que pode ser usado em mais de uma feature vem para cá. Se o botão de "favoritar" for usado tanto na Pokédex quanto em uma futura tela de "Meus Favoritos", o código desse botão mora no shared. O mesmo vale para a BottomNavigationBar, fontes de texto padronizadas ou modelos de dados genéricos. Isso evita duplicação de código.
+A divisão arquitetural do projeto base adota o padrão **Feature-First (Arquitetura Baseada em Funcionalidades)**, organizando o código por contexto de negócio em vez de tipo de arquivo:
 
-### Questão 2: Mapeamento de nova rota  
-Novas inserções no arquivo `app_routes.dart`
+1. **Pasta `app/` (Configurações Globais)**
+   * **O que armazena:** O núcleo de inicialização global do app.
+   * **Funcionalidade:** Centraliza o widget raiz (`MaterialApp`), configurações de temas visuais (como os tons de verde padronizados) e o arquivo concentrador de mapeamento de rotas nomeadas.
+2. **Pasta `core/` (Núcleo do Sistema)**
+   * **O que armazena:** A infraestrutura técnica e motores de baixo nível.
+   * **Funcionalidade:** Guarda lógicas não visuais compartilhadas globalmente, como clientes HTTP, conexões com serviços locais, tratamento abstrato de exceções e utilitários de sistema.
+3. **Pasta `features/` (Funcionalidades de Negócio)**
+   * **O que armazena:** O domínio das regras de negócio do aplicativo de forma isolada.
+   * **Funcionalidade:** Divide o app por contextos independentes. A nova pasta `pokemons/` encapsula estritamente suas próprias telas de listagem, detalhes, sub-widgets locais e controladores de fluxo.
+4. **Pasta `shared/` (Componentes Compartilhados)**
+   * **O que armazena:** Elementos comuns reutilizáveis por múltiplas features.
+   * **Funcionalidade:** Evita a duplicação de código (*DRY - Don't Repeat Yourself*). Concentra models de dados genéricas, componentes de interface transversais (como barras de navegação comuns) e estilos compartilhados.
 
-Foram adicionadas as seguintes linhas:  
+### Questão 2: Mapeamento de Nova Rota
+Novas inserções realizadas no arquivo `lib/app/app_routes.dart` para registrar a tela de exibição detalhada:
 
 ```dart
 // INSERÇÃO NOVA: Definição da constante de identificação da rota dos Pokémons
@@ -43,8 +44,9 @@ static const String detalhesPokemon = '/detalhes-pokemon';
 detalhesPokemon: (context) => const DetalhesPokemonPage(),
 ```
 
-### Questão 3: Nova ação na BottomNavigation  
-Descomentando a parte do `home_bottom_navigation.dart` (já adicionada anteriormente):  
+### Questão 3: Nova Ação na BottomNavigation
+
+Ativação do item de menu correspondente na barra inferior através do arquivo lib/features/home/widget/home_bottom_navigation.dart:
 ```dart
 // INSERÇÃO: Botão da tela de Pokémons descomentado
 BottomNavigationBarItem(
@@ -53,84 +55,82 @@ BottomNavigationBarItem(
   label: 'Pokémons',
 ),
 ```
-
-Incluído as linhas dentro do `home_page.dart`:  
+Inclusão das dependências e da lógica estrutural na página principal em lib/features/home/home_page.dart:
 ```dart
 // INSERÇÃO NOVA: Import da tela de listagem de Pokémons
 import '../pokemons/pokemons_page.dart';
 
-// INSERÇÃO NOVA: Adicionando a página na lista de renderização
+// INSERÇÃO NOVA: Adicionando a página na lista de renderização do IndexedStack
 PokemonsPage(),
 
-Descomentado:
-// A ordem desta lista deve bater com a ordem de _paginas.
+// INSERÇÃO NOVA: Alinhamento de títulos na mesma posição do índice da página
 'Pokémons',
 ```
+* Explicação da troca de telas com o BottomNavigationBar:
+  A alternância de abas ocorre via gerenciamento de estado local na HomePage (StatefulWidget).
 
-Criado o arquivo `./pokemons/pokemons_page.dart` com Scaffold.  
+  1. Estado Central: A classe _HomePageState gerencia a variável primitiva _indiceSelecionado, usada para indexar os itens das coleções paralelas de _paginas e _titulos.
 
-Explicação da troca de telas com o BottomNavigationBar: 
-    A troca de contexto ocorre através do gerenciamento de estado local na HomePage, que é um StatefulWidget.  
-    O processo funciona da seguinte forma:  
-    1. Estado Central: A classe _HomePageState mantém a variável _indiceSelecionado, que rastreia qual aba está ativa, e duas listas paralelas: _paginas (contendo os Widgets de cada tela) e _titulos (contendo os textos da AppBar).  
-    2. Interação: Quando o usuário toca em um item da HomeBottomNavigation, a função _alterarPagina é chamada, recebendo o novo índice escolhido.  
-    3. Reconstrução (State): A função executa o método setState(), atualizando o _indiceSelecionado e sinalizando ao Flutter que a interface precisa ser reconstruída.  
-    4. Renderização com IndexedStack: O corpo da tela (body) utiliza o widget IndexedStack. Ele carrega todos os widgets da lista _paginas de uma só vez, mas exibe apenas aquele que corresponde ao _indiceSelecionado. Isso garante uma troca instantânea  e preserva o estado interno de cada tela (posição de rolagem, dados inseridos, etc.) enquanto o usuário navega entre as abas.
+  2. Interação: Ao clicar na barra, o gatilho onTap despacha o novo índice para a função _alterarPagina.
 
-### Questão 4: Cria Classe Pokémon  
-Com base na prova pratica do 1 bimestre, foi adaptado para esta atividade (equivalente ao `produto.dart`).  
-Linhas modificadas (da prova) foram comentadas no código.  
-    
-Criação do arquivo `.lib/shared/models.pokemon.dart`.
+  3. Reconstrução Reativa: O método setState() atualiza a variável de estado, notificando o framework para re-renderizar a árvore de componentes afetada.
 
-### Questão 5 e 7: Criar a tela de listagem + Lista Fake de Pokémons
+  4. IndexedStack: O corpo (body) do Scaffold implementa o widget IndexedStack. Ele mantém todas as páginas pré-carregadas em memória para manter o estado interno de rolagem e dados intactos, mas exibe de forma instantânea apenas o filho posicionado no índice ativo, impedindo o empilhamento desnecessário de rotas nativas.
 
-Criação do arquivo `lib/features/pokemons/pokemons_page.dart`. 
+### Questão 4: Criação da Model Pokémon
 
-A tela consome uma lista estática mockada de **12 Pokémons** (contendo os 3 iniciais das três primeiras gerações, Pikachu, Mew e Mewtwo) localizada no arquivo de model. Para contornar as restrições de segurança de CORS impostas pelo ambiente Flutter Web no Chrome, as imagens foram apontadas diretamente para o repositório raw da PokeAPI no GitHub, cujo servidor possui cabeçalhos abertos de compartilhamento.
+Com base nas classes desenvolvidas na Prova Prática do 1º Bimestre, a estrutura foi convertida para o modelo de dados imutáveis do Flutter, adaptando atributos legados para o padrão de nomenclatura camelCase.
+* Arquivo criado em: lib/shared/models/pokemon.dart
 
-O layout foi estruturado utilizando um `GridView.builder` dinâmico para renderizar os cards de forma limpa e performática em duas colunas.
+### Questão 5 e 7: Tela de Listagem + Lista Fake de Pokemons
+* Arquivo criado em: lib/features/pokemons/pokemons_page.dart
+
+A tela consome uma lista mockada contendo 12 Pokémons (compostos pelos 3 iniciais das três primeiras gerações clássicas, Pikachu, Mew e Mewtwo). Para mitigar as restrições de segurança de políticas de CORS impostas pelo Chrome no ambiente Flutter Web, os endpoints das imagens foram apontados para o repositório estável de arquivos públicos (raw) da PokeAPI no GitHub. A renderização utiliza o componente performático GridView.builder distribuído em duas colunas.
 
 ### Questão 6: Layout dos Cards
-Criação do componente isolado `lib/features/pokemons/widgets/pokemon_card.dart`.
+* Arquivo criado em: lib/features/pokemons/widgets/pokemon_card.dart
 
-Seguindo a exigência de modularização do projeto, o layout do card foi extraído para uma subpasta de widgets. O design respeita a identidade visual em tons de verde definida pelo professor, utilizando:
-* `Card` com bordas arredondadas e contorno sutil em verde claro.
-* `InkWell` para fornecer feedback visual de clique (efeito cascata).
-* `FilterQuality.none` na renderização das imagens para garantir que a estética clássica de Pixel Art (estilo Game Boy / Nintendo DS) permaneça nítida ao ser expandida na tela.
+Seguindo a regra de componentização e desacoplamento de código, o card individual foi isolado em uma subpasta de widgets. Características implementadas:
+
+   * Card estruturado com bordas arredondadas e contornos na paleta de cores verde;
+
+   * Revestimento com widget InkWell para fornecer animação responsiva de toque por efeito cascata;
+
+   * Injeção da propriedade FilterQuality.none na renderização das imagens para preservar o visual serrilhado nítido característico de Pixel Art retrô (estilo Game Boy Advance / Nintendo DS).
 
 ### Questão 8: Tela de Detalhes
-Criação do arquivo `lib/features/pokemons/detalhes_pokemon_page.dart`.
+* Arquivo criado em: lib/features/pokemons/detalhes_pokemon_page.dart
 
-Para manter a fidelidade com a arquitetura e design pré-existentes do projeto base (como a tela de exibição de produtos), a interface de detalhes foi construída seguindo um padrão visual plano (*flat*), eliminando blocos flutuantes pesados.
-* **Alinhamento:** Todo o bloco de conteúdo textual e características herdadas da prova foi alinhado estritamente à esquerda (`CrossAxisAlignment.start`).
-* **Elementos obrigatórios inclusos:** Imagem em destaque no topo com container de fundo neutro, Nome acompanhado do identificador numérico, Tag de Tipo destacada, Ficha técnica textual com ícones nativos (Nível, HP Máximo/Atual e Status de Captura) e a seção descritiva das características do Pokémon.
+Respeitando a identidade visual minimalista e plana (flat) do fluxo de produtos original do professor, a interface descarta blocos de elevação flutuantes:
+
+   * Alinhamento Assíncrono: Uso do alinhamento CrossAxisAlignment.start para direcionar todo o conteúdo textual estritamente para a margem esquerda;
+
+   * Ficha Técnica Abstrata: Exibição da imagem em banner superior amplo, nome com indexação numérica (#000), chip identificador de elementos, além das estatísticas de jogo herdadas da prova (Nível, HP Atual/Máximo e flag de Captura) acompanhadas de ícones nativos.
 
 ### Questão 9: Evento de Navegação do Card para os Detalhes
 
-A amarração do fluxo de navegação foi feita injetando a lógica do `Navigator` dentro do evento `onTap` do `PokemonCard`. O clique recupera o contexto da aplicação e empilha a rota cadastrada passando o próprio objeto selecionado como argumento:
-
-```dart
+A fiação entre as telas foi estabelecida configurando o callback de clique do card. O método encapsula a chamada do Navigator injetando o objeto instanciado via argumento tipado:
+```Dart
 onTap: () {
   Navigator.pushNamed(
     context,
     '/detalhes-pokemon', // Rota configurada na Questão 2
-    arguments: pokemon,   // Objeto inteiro da model enviado por parâmetro
+    arguments: pokemon,   // Objeto completo contendo o estado do Pokémon
   );
 },
 ```
-Na tela de destino (DetalhesPokemonPage), os dados são extraídos dinamicamente da requisição logo no início do método de build através da linha:
-
-```dart
+Na classe receptora (DetalhesPokemonPage), a extração é efetuada diretamente no escopo do ciclo de construção (build):
+```Dart
 final pokemon = ModalRoute.of(context)!.settings.arguments as Pokemon;
 ```
-### Desafio Adicional
+
+### 🚀 Desafio Adicional Implementado
 1. Botão de gostar / desgostar (StatefulWidget)
 
-A página DetalhesPokemonPage foi voluntariamente convertida de StatelessWidget para StatefulWidget para viabilizar a manipulação de estado em tempo de execução.
+A página DetalhesPokemonPage foi voluntariamente convertida para um StatefulWidget para suportar a reatividade de estado local.
 
-No rodapé da página de detalhes, foi adicionado um botão de ação horizontal persistente, ocupando a largura total da tela para espelhar o comportamento do botão "Adicionar ao carrinho" da feature de produtos.
+No rodapé da interface de detalhes, foi acoplado um botão horizontal estendido (Full-width) persistente, espelhando a usabilidade do botão "Adicionar ao carrinho" de produtos:
 
-* Comportamento do Estado Local: Ao interagir com o botão, o método setState() é disparado invertendo o valor booleano do atributo pokemon.favorito.
+* Mutação de Estado: O gatilho onPressed executa o método setState(), invertendo o valor lógico booleano da propriedade pokemon.favorito.
 
-* Feedback Visual Imediato: A interface reconstrói o botão dinamicamente trocando sua cor (Verde com ícone vazado para Gostar / Vermelho com ícone preenchido para Remover dos Favoritos) e alterando o rótulo de texto em tempo real conforme a escolha do usuário.
+* Feedback Visual Imediato: O componente redesenha a árvore mudando dinamicamente sua cor (Verde com ícone vazado para Gostar / Vermelho com ícone preenchido para Remover dos Favoritos) e alterando as strings textuais em tempo real de acordo com o clique.
