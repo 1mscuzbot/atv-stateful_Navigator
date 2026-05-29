@@ -50,7 +50,7 @@ class PokemonCard extends StatelessWidget {
                 child: Image.network(
                   pokemon.urlImagem,
                   fit: BoxFit.contain,
-                  filterQuality: FilterQuality.none,
+                  filterQuality: FilterQuality.none, // Otimização para imagens simples, mantendo a estética pixelada
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.broken_image, size: 50, color: Colors.grey);
                   },

@@ -31,7 +31,7 @@ class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
             child: Image.network(
               pokemon.urlImagem,
               fit: BoxFit.contain,
-              filterQuality: FilterQuality.none,
+              filterQuality: FilterQuality.none, // Otimização para imagens simples, mantendo a estética pixelada
             ),
           ),
           
