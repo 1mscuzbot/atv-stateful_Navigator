@@ -11,7 +11,7 @@ class DetalhesPokemonPage extends StatefulWidget {
 class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
   @override
   Widget build(BuildContext context) {
-    // Extrai o objeto Pokemon enviado via argumento pelo Navigator [cite: 24]
+    // Extrai o objeto Pokemon enviado 
     final pokemon = ModalRoute.of(context)!.settings.arguments as Pokemon;
 
     return Scaffold(
@@ -22,7 +22,7 @@ class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
       ),
       body: Column(
         children: [
-          // 1. Imagem principal limpa ocupando o topo, como no modelo do professor [cite: 50]
+          // 1. Imagem principal limpa ocupando o topo
           Container(
             width: double.infinity,
             height: 300,
@@ -40,23 +40,23 @@ class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Garante o alinhamento <<
+                crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
-                  // Nome e Número [cite: 51]
+                  // Nome e Número
                   Text(
                     '${pokemon.nome} #${pokemon.numero.toString().padLeft(3, '0')}',
                     style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   
-                  // Tipo [cite: 52]
+                  // Tipo
                   Text(
                     'Tipo: ${pokemon.tipo}',
                     style: TextStyle(fontSize: 18, color: Colors.green.shade700, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 20),
 
-                  // Demais Atributos da Ficha (Plain Text sem os retângulos cinzas) [cite: 54]
+                  // Demais Atributos da Ficha
                   Row(
                     children: [
                       const Icon(Icons.star, size: 20, color: Colors.amber),
@@ -88,7 +88,7 @@ class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Seção de Descrição [cite: 53]
+                  // Seção de Descrição
                   const Text(
                     'Descrição',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -124,7 +124,7 @@ class _DetalhesPokemonPageState extends State<DetalhesPokemonPage> {
                     });
                   },
                   label: Text(
-                    pokemon.favorito ? 'Remover dos Favoritos' : 'Gostar deste Pokémon',
+                    pokemon.favorito ? 'Remover dos Favoritos' : 'Favoritar Pokémon',
                     style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),

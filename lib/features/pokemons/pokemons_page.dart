@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/models/pokemon.dart';
-import 'pokemon_card.dart';
+import './widget/pokemon_card.dart';
 
 class PokemonsPage extends StatelessWidget {
   const PokemonsPage({super.key});
