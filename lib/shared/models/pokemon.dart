@@ -17,10 +17,10 @@ class Pokemon {
   final int hpMaximo; // Convertido de hp_maximo para camelCase
   final bool capturado;
   
-  // Atributo Desafio: Indica se o Pokémon é favorito ou não
+  // INSERÇÃO: Atributo Desafio - Indica se o Pokémon é favorito ou não
   bool favorito;
 
-  // Novos atributos exigidos na questão, para a Interface Visual
+  // INSERÇÃO: Novos atributos exigidos na questão 5, para a Interface Visual
   final String urlImagem;
   final String descricao;
 
@@ -39,6 +39,7 @@ class Pokemon {
 }
 
 // QUESTÃO 7: Lista fake contendo os iniciais, Pikachu e lendários (Mínimo 12)
+// QUESTÃO 7: Lista atualizada com os Sprites clássicos de Game Boy / DS (CORS Aberto)
 List<Pokemon> pokemonsFake = [
   // --- 1ª GERAÇÃO ---
   Pokemon(
@@ -49,7 +50,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 20,
     hpMaximo: 20,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/bulbasaur.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
     descricao: 'Há uma semente de planta em suas costas desde o dia em que o Pokémon nasce. A semente cresce lentamente.',
   ),
   Pokemon(
@@ -60,7 +61,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 18,
     hpMaximo: 18,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/charmander.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
     descricao: 'A chama em sua cauda indica o poder de seu fogo interno. Se ela se apagar, o Pokémon morre.',
   ),
   Pokemon(
@@ -71,10 +72,43 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 22,
     hpMaximo: 22,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/squirtle.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
     descricao: 'Quando retrai seu longo pescoço para dentro de sua concha, ele dispara água com uma força incrível.',
   ),
-
+  Pokemon(
+    numero: 25,
+    nome: 'Pikachu',
+    tipo: 'Elétrico',
+    nivel: 12,
+    hpAtual: 35,
+    hpMaximo: 35,
+    capturado: true,
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+    descricao: 'Armazena eletricidade em suas bochechas vermelhas. Quando fica bravo, descarrega energia instantaneamente.',
+  ),
+  Pokemon(
+    numero: 150,
+    nome: 'Mewtwo',
+    tipo: 'Psíquico',
+    nivel: 70,
+    hpAtual: 220,
+    hpMaximo: 220,
+    capturado: false,
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png',
+    descricao: 'Um Pokémon criado por manipulação genética em laboratório. Seus poderes psíquicos são implacáveis.',
+  ),
+  Pokemon(
+    numero: 151,
+    nome: 'Mew',
+    tipo: 'Psíquico',
+    nivel: 50,
+    hpAtual: 160,
+    hpMaximo: 160,
+    capturado: false,
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png',
+    descricao: 'Diz-se que possui o mapa genético de todos os Pokémons existentes. Consegue ficar invisível à vontade.',
+  ),
+  
   // --- 2ª GERAÇÃO ---
   Pokemon(
     numero: 152,
@@ -84,7 +118,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 22,
     hpMaximo: 22,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/chikorita.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png',
     descricao: 'Usa a folha em sua cabeça para determinar a temperatura e a umidade do ambiente ao seu redor.',
   ),
   Pokemon(
@@ -95,7 +129,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 19,
     hpMaximo: 19,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/cyndaquil.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png',
     descricao: 'Costuma ser tímido e se enrolar como uma bola. Se for atacado, acende as chamas em suas costas.',
   ),
   Pokemon(
@@ -106,7 +140,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 24,
     hpMaximo: 24,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/totodile.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png',
     descricao: 'Pequeno, mas violento. Ele morde qualquer coisa que se mova diante de seus olhos.',
   ),
 
@@ -119,7 +153,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 21,
     hpMaximo: 21,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/treecko.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png',
     descricao: 'Possui pequenos ganchos na sola dos pés que o permitem andar verticalmente por paredes e tetos.',
   ),
   Pokemon(
@@ -130,7 +164,7 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 20,
     hpMaximo: 20,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/torchic.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png',
     descricao: 'Dentro de seu corpo há uma bolsa de fogo que queima sem parar. É quente como um abraço.',
   ),
   Pokemon(
@@ -141,42 +175,8 @@ List<Pokemon> pokemonsFake = [
     hpAtual: 23,
     hpMaximo: 23,
     capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/mudkip.jpg',
+    urlImagem: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png',
     descricao: 'A barbatana em sua cabeça funciona como um radar altamente sensível para detectar correntes de ar e água.',
   ),
 
-  // --- ESPECIAIS E LENDÁRIOS ---
-  Pokemon(
-    numero: 25,
-    nome: 'Pikachu',
-    tipo: 'Elétrico',
-    nivel: 12,
-    hpAtual: 35,
-    hpMaximo: 35,
-    capturado: true,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/pikachu.jpg',
-    descricao: 'Armazena eletricidade em suas bochechas vermelhas. Quando fica bravo, descarrega energia instantaneamente.',
-  ),
-  Pokemon(
-    numero: 151,
-    nome: 'Mew',
-    tipo: 'Psíquico',
-    nivel: 50,
-    hpAtual: 160,
-    hpMaximo: 160,
-    capturado: false,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/mew.jpg',
-    descricao: 'Diz-se que possui o mapa genético de todos os Pokémons existentes. Consegue ficar invisível à vontade.',
-  ),
-  Pokemon(
-    numero: 150,
-    nome: 'Mewtwo',
-    tipo: 'Psíquico',
-    nivel: 70,
-    hpAtual: 220,
-    hpMaximo: 220,
-    capturado: false,
-    urlImagem: 'https://img.pokemondb.net/artwork/large/mewtwo.jpg',
-    descricao: 'Um Pokémon criado por manipulação genética em laboratório. Seus poderes psíquicos são implacáveis.',
-  ),
 ];
