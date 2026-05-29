@@ -1,5 +1,7 @@
 # StatefulWidget + Navigator - Pokédex Flutter
 
+Equipe: Davi Emannoel, João Thomaz, Klaus Siegfried, Lucas Müller.
+
 ## 📋 Descrição da Atividade
 
 Nesta atividade, o projeto base em Flutter foi desenvolvido localmente e adaptado para incluir uma nova funcionalidade completa: uma lista de Pokémons (Pokédex). Seguindo as diretrizes de arquitetura, padrões de design e modularização do projeto original, a aplicação estende as features existentes reaproveitando os componentes e contratos pré-configurados.
