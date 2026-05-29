@@ -17,7 +17,7 @@ class Pokemon {
   final int hpMaximo; // Convertido de hp_maximo para camelCase
   final bool capturado;
   
-  // Atributo controlado pelo Desafio Adicional (StatefulWidget)
+  // Atributo Desafio: Indica se o Pokémon é favorito ou não
   bool favorito;
 
   // Novos atributos exigidos na questão, para a Interface Visual
